@@ -1,0 +1,17 @@
+data/
+app/data/
+*.private.json
+.env
+.env.*
+*.log
+*.bak
+node_modules/
+dist/
+build/
+coverage/
+.next/
+.cache/
+.turbo/
+.vite/
+.DS_Store
+Thumbs.db

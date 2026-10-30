@@ -1,0 +1,14 @@
+{
+  "name": "project-hq-workspace",
+  "version": "4.54.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "description": "Project HQ - clean slate private workspace, generic artist projects, connected social stats, trading research and Auto Sound Design",
+  "scripts": {
+    "start": "node server.mjs --open",
+    "test": "node --check server.mjs && node --check clean-slate.mjs && node --check trading-bridge.mjs && node --check public/workspace/clean-slate.js && node --test tests/*.test.mjs"
+  }
+}

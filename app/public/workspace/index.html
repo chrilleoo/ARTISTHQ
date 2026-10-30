@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="sv"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0b0f"><meta name="description" content="Project HQ – en privat arbetsyta för dina projekt och AI-agenter.">
+<title>Project HQ — Your workspace</title>
+<link rel="icon" href="/workspace/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/workspace/clean-slate.css?v=4.54">
+<script src="/workspace/clean-slate.js?v=4.54" defer></script>
+</head><body>
+<div class="shell">
+  <aside class="sidebar" aria-label="Huvudmeny">
+    <button class="brand" id="go-home" type="button"><span class="brand-symbol">✦</span><span>PROJECT <b>HQ</b><small>YOUR PRIVATE WORKSPACE</small></span></button>
+    <div class="side-divider"></div>
+    <button class="side-main selected" type="button" id="side-overview"><span class="side-ico">⌑</span> Översikt</button>
+    <div class="side-title">DINA PROJEKT <span id="project-counter">00</span></div>
+    <nav id="project-nav" class="project-nav" aria-label="Projekt"></nav>
+    <button class="add-side" id="side-new" type="button"><span>＋</span> Nytt projekt</button>
+    <div class="side-title side-tools">VERKTYG</div>
+    <a href="/auto-sound-design/" class="side-main"><span class="side-ico">◈</span> Auto Sound Design</a>
+    <button type="button" id="side-trading" class="side-main"><span class="side-ico">⌁</span> Trading</button>
+    <div class="side-spacer"></div>
+    <div class="private-note"><span class="private-dot"></span><span>LOKAL & PRIVAT<small>Filer och nycklar lagras här på datorn.</small></span></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><span id="breadcrumb">HQ / ÖVERSIKT</span><div class="top-actions"><span class="topdate" id="current-date"></span><button type="button" class="icon-button" id="settings-open" title="AI-inställningar">⚙</button></div></header>
+    <section id="home-view" class="view">
+      <div class="eyebrow"><i></i> THE WORKSPACE</div>
+      <div class="headline"><div><h1>Build something<span class="dot">.</span></h1><p>Din arbetsyta. Dina projekt. Börja från noll.</p></div><button type="button" id="hero-create" class="primary">＋ NYTT PROJEKT</button></div>
+      <div class="metrics"><article><span>PROJEKT</span><strong id="metric-projects">00</strong><small>Aktiva arbetsytor</small></article><article><span>UPPGIFTER</span><strong id="metric-tasks">00</strong><small>Att göra</small></article><article><span>KLARA</span><strong id="metric-done">00</strong><small>Slutförda</small></article></div>
+      <div class="section-title"><div><span class="eyebrow flat">01 / PROJECTS</span><h2>Dina projekt</h2></div><span class="section-counter" id="home-project-count">00</span></div>
+      <div id="home-projects" class="project-grid"></div>
+      <div class="section-title tools-header"><div><span class="eyebrow flat">02 / START HERE</span><h2>Skapa från en mall</h2></div></div>
+      <div class="template-grid"><button data-template="artist"><span>♫</span><b>Artist</b><small>Musik, sociala medier och releaseplan</small><em>Skapa ↗</em></button><button data-template="business"><span>◇</span><b>Business</b><small>Företag, leads och utveckling</small><em>Skapa ↗</em></button><button data-template="creative"><span>✳</span><b>Creative</b><small>Innehåll, produktion och idéer</small><em>Skapa ↗</em></button><button data-template="general"><span>＋</span><b>Blankt projekt</b><small>Bygg din egen arbetsyta</small><em>Skapa ↗</em></button></div>
+    </section>
+    <section id="project-view" class="view" hidden>
+      <button type="button" class="back-hq" id="project-back">← HQ</button>
+      <div class="project-hero"><div><span class="eyebrow flat" id="project-type">YOUR PROJECT</span><h1 id="project-name"></h1><p id="project-description"></p></div><button type="button" id="project-edit" class="quiet-button">Redigera ↗</button></div>
+      <div class="project-tabs"><button class="tab active" data-tab="overview">Översikt</button><button class="tab" data-tab="agents">AI-agenter</button><button class="tab" data-tab="social" id="social-tab">Social statistik</button></div>
+      <div id="project-overview-panel" class="project-panel"><div class="content-columns"><section class="panel"><div class="panel-heading"><div><span class="eyebrow flat">01 / PLAN</span><h2>Uppgifter</h2></div><span id="task-count">0 kvar</span></div><form id="new-task-form" class="task-add"><input name="title" required maxlength="180" placeholder="Lägg till en uppgift…" autocomplete="off"><button type="submit" aria-label="Lägg till uppgift">＋</button></form><div id="task-list"></div></section><section class="panel information"><span class="eyebrow flat">02 / NEXT STEPS</span><h2>Gör plats för nästa idé.</h2><p>Här samlar du dina mål och det som faktiskt behöver göras. Inga förifyllda resultat eller gamla projekt.</p><div class="mini-divider"></div><button type="button" class="danger-link" id="project-delete">Radera projekt →</button></section></div></div>
+      <div id="project-agents-panel" class="project-panel" hidden><div class="content-columns"><section class="panel"><span class="eyebrow flat">01 / YOUR TEAM</span><h2>Prata med ditt agentteam</h2><p class="soft-copy">AI-agenterna hjälper dig att planera och resonera. De gör inga externa åtgärder utan godkännande.</p><div class="role-picker" id="agent-roles"></div><div class="chat-body" id="chat-body"></div><form id="agent-chat-form" class="chat-compose"><input name="message" required maxlength="2200" autocomplete="off" placeholder="Fråga din agent…"><button type="submit" id="agent-send">Skicka ↗</button></form><p class="fine-print" id="agent-note">Anslut en Ollama Cloud-nyckel i inställningarna för AI-svar.</p></section><section class="panel information"><span class="eyebrow flat">02 / AI CONTROL</span><h2>Du bestämmer.</h2><p>AI-svar kräver en egen Ollama Cloud-nyckel. Ingen automatisk research, publicering eller outreach är aktiverad.</p><button class="subtle" id="agent-connect" type="button">Anslut AI ↗</button></section></div></div>
+      <div id="project-social-panel" class="project-panel" hidden><div class="panel social-heading"><span class="eyebrow flat">CONNECTED / ANALYTICS</span><h2>Social statistik</h2><p>Välj dina egna konton. En länk öppnar profilen. För automatiska siffror behöver varje plattform en godkänd API-anslutning. Saknas data visas inget påhittat resultat.</p></div><div id="social-cards" class="social-grid"></div></div>
+    </section>
+    <section id="trading-view" class="view" hidden><button class="back-hq" id="trading-back" type="button">← HQ</button><div class="project-hero"><div><span class="eyebrow flat">TOOLS / RESEARCH</span><h1>Trading<span class="dot">.</span></h1><p>Marknadsbevakning och tidigare analyser. Inga köp görs automatiskt.</p></div></div><section class="panel"><div class="panel-heading"><h2>Bevakningslista</h2><select id="trading-group"><option value="Sverige">Sverige</option><option value="USA">USA</option><option value="Fonder">Fonder</option></select></div><div id="trading-list" class="trading-list"></div></section></section>
+    <footer>PROJECT HQ <span> / PRIVATE BY DESIGN</span><em>LESS CLUTTER. MORE FLOW.</em></footer>
+  </main>
+</div>
+<div id="modal-root" hidden></div><div id="toast" role="status" aria-live="polite"></div>
+</body></html>
